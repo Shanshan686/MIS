@@ -34,10 +34,13 @@ country_code = 'us'
 url = 'http://api.openweathermap.org/data/2.5/weather?q={city},{country_code}&APPID={APIKEY}'.format(
     city=city, country_code=country_code, APIKEY=APIKEY)
 
-# print(url)
+print(url)
 f = urllib.request.urlopen(url)
 response_text = f.read().decode('utf-8')
 response_data = json.loads(response_text)
 print(response_data)
 
 # How do we get current temperature?
+import pprint
+pprint.pprint(response_data)
+print(response_data['main']['temp']-273.15)
